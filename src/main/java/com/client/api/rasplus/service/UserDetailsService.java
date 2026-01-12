@@ -1,5 +1,6 @@
 package com.client.api.rasplus.service;
 
+import com.client.api.rasplus.dto.UserDetailDTO;
 import com.client.api.rasplus.model.jpa.UserCredentials;
 
 public interface UserDetailsService {
@@ -9,4 +10,6 @@ public interface UserDetailsService {
     void sendRecoveryCode(String email);
 
     boolean recoveryCodeIsValid(String recoveryCode, String email);
+
+    void updatePasswordByRecoveryCode(UserDetailDTO dto);
 }

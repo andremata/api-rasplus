@@ -2,6 +2,7 @@ package com.client.api.rasplus.controller;
 
 import com.client.api.rasplus.dto.LoginDTO;
 import com.client.api.rasplus.dto.TokenDTO;
+import com.client.api.rasplus.dto.UserDetailDTO;
 import com.client.api.rasplus.model.redis.UserRecoveryCode;
 import com.client.api.rasplus.service.AuthenticationService;
 import com.client.api.rasplus.service.UserDetailsService;
@@ -36,7 +37,13 @@ public class AuthenticationController {
     public ResponseEntity<?> recoveryCodeIsValid(@RequestParam("recoveryCode") String recoveryCode,
                                                  @RequestParam("email") String email) {
 
-        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+        return ResponseEntity.status(HttpStatus.OK)
                 .body(userDetailsService.recoveryCodeIsValid(recoveryCode, email));
+    }
+
+    @PatchMapping("/recovery-code/password")
+    public ResponseEntity<?> updatePasswordByRecoveryCode(@Valid @RequestBody UserDetailDTO dto) {
+        userDetailsService.updatePasswordByRecoveryCode(dto);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 }
