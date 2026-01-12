@@ -1,8 +1,8 @@
 package com.client.api.rasplus.filter;
 
 import com.client.api.rasplus.exception.NotFoundException;
-import com.client.api.rasplus.model.UserCredentials;
-import com.client.api.rasplus.repository.UserDetailRepository;
+import com.client.api.rasplus.model.jpa.UserCredentials;
+import com.client.api.rasplus.repository.jpa.UserDetailRepository;
 import com.client.api.rasplus.service.TokenService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

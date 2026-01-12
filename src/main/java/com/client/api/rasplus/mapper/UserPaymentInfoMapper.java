@@ -1,8 +1,8 @@
 package com.client.api.rasplus.mapper;
 
 import com.client.api.rasplus.dto.UserPaymentInfoDTO;
-import com.client.api.rasplus.model.User;
-import com.client.api.rasplus.model.UserPaymentInfo;
+import com.client.api.rasplus.model.jpa.User;
+import com.client.api.rasplus.model.jpa.UserPaymentInfo;
 
 public class UserPaymentInfoMapper {
 

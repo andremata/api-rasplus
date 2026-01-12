@@ -1,7 +1,5 @@
 package com.client.api.rasplus.dto;
 
-import com.client.api.rasplus.model.SubscriptionsType;
-import com.client.api.rasplus.model.UserType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

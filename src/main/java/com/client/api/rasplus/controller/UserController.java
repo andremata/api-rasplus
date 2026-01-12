@@ -1,7 +1,7 @@
 package com.client.api.rasplus.controller;
 
 import com.client.api.rasplus.dto.UserDTO;
-import com.client.api.rasplus.model.User;
+import com.client.api.rasplus.model.jpa.User;
 import com.client.api.rasplus.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

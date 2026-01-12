@@ -1,6 +1,6 @@
 package com.client.api.rasplus.service.impl;
 
-import com.client.api.rasplus.model.UserCredentials;
+import com.client.api.rasplus.model.jpa.UserCredentials;
 import com.client.api.rasplus.service.TokenService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;

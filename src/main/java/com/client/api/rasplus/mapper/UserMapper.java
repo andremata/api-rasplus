@@ -1,9 +1,9 @@
 package com.client.api.rasplus.mapper;
 
 import com.client.api.rasplus.dto.UserDTO;
-import com.client.api.rasplus.model.SubscriptionsType;
-import com.client.api.rasplus.model.User;
-import com.client.api.rasplus.model.UserType;
+import com.client.api.rasplus.model.jpa.SubscriptionsType;
+import com.client.api.rasplus.model.jpa.User;
+import com.client.api.rasplus.model.jpa.UserType;
 
 public class UserMapper {
 

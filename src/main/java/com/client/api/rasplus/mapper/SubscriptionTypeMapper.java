@@ -1,7 +1,7 @@
 package com.client.api.rasplus.mapper;
 
 import com.client.api.rasplus.dto.SubscriptionTypeDTO;
-import com.client.api.rasplus.model.SubscriptionsType;
+import com.client.api.rasplus.model.jpa.SubscriptionsType;
 
 public class SubscriptionTypeMapper {
 

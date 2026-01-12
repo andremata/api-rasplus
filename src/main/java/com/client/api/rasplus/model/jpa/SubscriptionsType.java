@@ -1,4 +1,4 @@
-package com.client.api.rasplus.model;
+package com.client.api.rasplus.model.jpa;
 
 import jakarta.persistence.*;
 import lombok.*;

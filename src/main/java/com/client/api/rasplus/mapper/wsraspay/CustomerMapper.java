@@ -1,7 +1,7 @@
 package com.client.api.rasplus.mapper.wsraspay;
 
 import com.client.api.rasplus.dto.wsraspay.CustomerDTO;
-import com.client.api.rasplus.model.User;
+import com.client.api.rasplus.model.jpa.User;
 
 public class CustomerMapper {
 

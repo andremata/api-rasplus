@@ -1,6 +1,6 @@
-package com.client.api.rasplus.repository;
+package com.client.api.rasplus.repository.jpa;
 
-import com.client.api.rasplus.model.UserCredentials;
+import com.client.api.rasplus.model.jpa.UserCredentials;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
