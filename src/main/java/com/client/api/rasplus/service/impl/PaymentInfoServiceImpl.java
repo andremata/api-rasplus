@@ -19,9 +19,10 @@ import com.client.api.rasplus.model.jpa.UserCredentials;
 import com.client.api.rasplus.model.jpa.UserPaymentInfo;
 import com.client.api.rasplus.repository.jpa.*;
 import com.client.api.rasplus.service.PaymentInfoService;
+import com.client.api.rasplus.utils.PasswordUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import java.util.Objects;
 
 @Service
@@ -84,7 +85,7 @@ public class PaymentInfoServiceImpl implements PaymentInfoService {
             }
 
             UserCredentials userCredentials = new UserCredentials(null, user.getEmail(),
-                    new BCryptPasswordEncoder().encode(defaultPassword), userTypeOpt.get());
+                    PasswordUtils.encode(defaultPassword), userTypeOpt.get());
 
             userDetailRepository.save(userCredentials);
 

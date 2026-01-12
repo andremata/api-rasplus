@@ -1,6 +1,7 @@
 package com.client.api.rasplus.service.impl;
 
 import com.client.api.rasplus.dto.UserDetailDTO;
+import com.client.api.rasplus.exception.BadRequestException;
 import com.client.api.rasplus.exception.NotFoundException;
 import com.client.api.rasplus.integration.MailIntegration;
 import com.client.api.rasplus.model.jpa.UserCredentials;
@@ -8,9 +9,9 @@ import com.client.api.rasplus.model.redis.UserRecoveryCode;
 import com.client.api.rasplus.repository.jpa.UserDetailRepository;
 import com.client.api.rasplus.repository.redis.UserRecoveryCodeRepository;
 import com.client.api.rasplus.service.UserDetailsService;
+import com.client.api.rasplus.utils.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -35,10 +36,17 @@ public class UserDetailServiceImpl implements UserDetailsService {
     public UserCredentials loadUserByUsernameAndPass(String username, String password) {
         var userDetailOpt = userDetailRepository.findByUsername(username);
 
-        if(userDetailOpt.isPresent()) {
-            return userDetailOpt.get();
+        if(userDetailOpt.isEmpty()) {
+            throw new NotFoundException("Usuário não encontrado!");
         }
-        throw new NotFoundException("Usuário não encontrado!");
+
+        UserCredentials userCredentials = userDetailOpt.get();
+
+        if(PasswordUtils.matches(password, userCredentials.getPassword())) {
+            return userCredentials;
+        }
+
+        throw new BadRequestException("Usuário ou senha inválido!");
     }
 
     @Override
@@ -99,7 +107,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             var userDetailOpt = userDetailRepository.findByUsername(dto.getEmail());
 
             UserCredentials userCredentials = userDetailOpt.get();
-            userCredentials.setPassword(new BCryptPasswordEncoder().encode(userCredentials.getPassword()));
+            userCredentials.setPassword(PasswordUtils.encode(userCredentials.getPassword()));
 
             userDetailRepository.save(userCredentials);
             mailIntegration.send(dto.getEmail(), "Senha alterada!", "Sua senha foi alterada com sucesso");
