@@ -21,7 +21,7 @@ import java.util.Random;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @Value("${ws.rasplus.redis.recoverycode.timeout}")
-    private Long timeoutMinute;
+    private String timeoutMinute;
 
     @Autowired
     private UserDetailRepository userDetailRepository;
@@ -91,7 +91,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             throw new NotFoundException("Código de verificação inválido!");
         }
 
-        LocalDateTime timeout = userRecoveryCode.getCreationDate().plusMinutes(timeoutMinute);
+        LocalDateTime timeout = userRecoveryCode.getCreationDate().plusMinutes(Long.parseLong(timeoutMinute));
         LocalDateTime now = LocalDateTime.now();
 
         if(now.isAfter(timeout)) {
